@@ -1,0 +1,71 @@
+services:
+
+
+  node-app:
+    build: node-app
+    ports:
+      - '80:8081'
+    deploy:
+      restart_policy:
+        condition: always
+    depends_on:
+      - redis-server
+ 
+
+  react-app-dev-test:
+    build: 
+      context: react-app
+      dockerfile: Dockerfile.dev
+    ports:
+      - '81:3000'
+    volumes:
+      - type: bind
+        source: ./react-app
+        target: /app
+      - /app/node_modules
+    deploy:
+      restart_policy:
+        condition: always
+    command:
+      - bash 
+      - -c 
+      - |
+        npm test 1>&1 2>&1 &
+        npm start
+
+
+#  separate test app is as large as development environment
+#  more convinient is to run tests at the development app
+#
+#  react-app-test:
+#    build:
+#      context: react-app
+#      dockerfile: Dockerfile.dev
+#    volumes:
+#      - ./react-app:/app
+#      - /app/node_modules
+#    command: ["npm", "run", "test"]        
+#    deploy:
+#      restart_policy:
+#        condition: always
+
+
+  react-app-prod:
+    build: react-app
+    ports:
+      - '82:80'
+    deploy:
+      restart_policy:
+        condition: always
+
+
+  redis-server:
+    build: redis-server
+    deploy:
+      restart_policy:
+        condition: always
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+

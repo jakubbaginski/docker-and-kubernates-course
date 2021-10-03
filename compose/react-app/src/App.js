@@ -18,8 +18,8 @@ function App() {
           Learn React
         </a>
         <p>
-          Test machine
-        </p>
+        Now deployed on AWS
+	</p>
       </header>
     </div>
   );

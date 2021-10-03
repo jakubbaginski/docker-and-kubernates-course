@@ -8,6 +8,7 @@ before_install:
 
 script:
   - docker run -e CI=true compose_react-app-test npm test
+  - docker build -t compose_react-app-test -f Dockerfile .
 
 deploy:
   provider: elasticbeanstalk

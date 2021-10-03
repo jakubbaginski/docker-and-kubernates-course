@@ -3,13 +3,11 @@ services:
   - docker
 
 before_install:
-  - docker build -t compose_react-app-test -f compose/react-app/Dockerfile.dev compose/react-app
+  - cd compose/react-app
+  - docker build -t compose_react-app-test -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true compose_react-app-test npm test
-
-before_deploy:
-  - docker build -t compose_react-app-test -f compose/react-app/Dockerfile compose/react-app
 
 deploy:
   provider: elasticbeanstalk

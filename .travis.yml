@@ -16,7 +16,7 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   region: "us-east-2"
   app: "dockerandkubernatesscourse"
-  env: "Dockerandkubernatesscourse-env"
+  env: "Dockerandkubernatesscourse-env-1"
   bucket_name: "elasticbeanstalk-us-east-2-349990395107"
   bucket_path: "dockerandkubernatesscourse"
   on:

@@ -8,6 +8,9 @@ before_install:
 script:
   - docker run -e CI=true compose_react-app-test npm test
 
+before_deploy:
+  - docker build -t compose_react-app-test -f compose/react-app/Dockerfile compose/react-app
+
 deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY

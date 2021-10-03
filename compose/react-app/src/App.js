@@ -18,7 +18,7 @@ function App() {
           Learn React
         </a>
         <p>
-        Now deployed on AWS.</b>
+        Now deployed on AWS.</br>
         Two branches Git workflow
 	</p>
       </header>

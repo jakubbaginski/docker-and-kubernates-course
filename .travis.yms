@@ -1,9 +1,0 @@
-sudo: required
-services:
-  - docker
-
-before_install:
-  - docker build -t compose_react-app-test -f compose/react-app/Dockerfile.dev compose/react-app
-
-script:
-  - docker run -e CI=true compose_react-app-test npm test

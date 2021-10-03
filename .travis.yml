@@ -7,3 +7,17 @@ before_install:
 
 script:
   - docker run -e CI=true compose_react-app-test npm test
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  region: "us-east-2"
+  app: "dockerandkubernatesscourse"
+  env: "Dockerandkubernatesscourse-env"
+  bucket_name: "elasticbeanstalk-us-east-2-349990395107"
+  bucket_path: "dockerandkubernatesscourse"
+  on:
+    branch: master

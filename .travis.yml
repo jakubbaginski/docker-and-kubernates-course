@@ -19,4 +19,5 @@ deploy:
   env: "Dockerandkubernatesscourse-env"
   bucket_name: "elasticbeanstalk-us-east-2-349990395107"
   bucket_path: "dockerandkubernatesscourse"
-  
+  on:
+    branch: main
